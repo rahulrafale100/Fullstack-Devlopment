@@ -41,3 +41,4 @@ insert into House(name,house_name) values ("Vaishanvi","Nilgiri");
 insert into House(name,house_name) values ("Umashanker","Nilgiri");
 insert into House(name,house_name) values ("Smriti","Shivalik");
 
+select s.name,s.gender,f.name from student s,House f where s.friend_id=f.id and f.House_name="Udaigiri";
