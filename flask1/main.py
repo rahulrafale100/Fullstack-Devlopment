@@ -3,9 +3,30 @@ import psycopg2
 
 app=Flask("Job sites")
 
-@app.route("/")   # Decorator
+dbconn=psycopg2.connect("dbname=naukri")
+@app.route("/")
+def intro():
+    
+    cursor=dbconn.cursor()
+    cursor.execute("select count(*) from openings")
+    n=cursor.fetchall()[0][0]
+    return f"""
+    <html>
+    <head>
+    <title>Welcome to my page</title>
+    </head>
+    <body>
+    <h1>This is my list of job collection</h1>
+    There are currently {n} jobs available.</br>
+    Link to the page of jobs is <a href="/jobs">here</a>. 
+    </body>
+    </html>
+    """
+
+
+@app.route("/jobs")   # Decorator
 def hello():
-    dbconn=psycopg2.connect("dbname=naukri")
+    
     cursor=dbconn.cursor()
     cursor.execute("select title ,company_name,description from openings")
     ret=[]
@@ -13,7 +34,7 @@ def hello():
         item=f"<b> {title}</b> :: {company_name} </br> {description}"
         ret.append(item)
     l="<hr/>".join(ret)
-    return f"List of Jobs {l}"
+    return f"List of Jobs </br>{l}"
 
 
 
