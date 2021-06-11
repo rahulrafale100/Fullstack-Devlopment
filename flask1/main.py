@@ -18,7 +18,7 @@ def intro():
     <body>
     <h1>This is my list of job collection</h1>
     There are currently {n} jobs available.</br>
-    Link to the page of jobs is <a href="/jobs">here</a>. 
+    Link to the page of jobs is <a href="/jobs"><b>here</b></a>. 
     </body>
     </html>
     """
@@ -31,10 +31,16 @@ def hello():
     cursor.execute("select title ,company_name,description from openings")
     ret=[]
     for title,company_name,description in cursor.fetchall():
-        item=f"<b> {title}</b> :: {company_name} </br> {description}"
+        item=f"<li><b> {title}</b> :: {company_name} </br> {description}</li>"
         ret.append(item)
     l="<hr/>".join(ret)
-    return f"List of Jobs </br>{l}"
+    return f"""
+    <html>
+    <title>All Job Description</title>
+    <body>
+    <h1>List of Jobs </br></h1>{l}
+    </body>
+    </html>"""
 
 
 
