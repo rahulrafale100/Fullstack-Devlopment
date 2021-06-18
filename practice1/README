@@ -1,0 +1,12 @@
+How to see Working of this App:-
+1.Open ubuntu terminal
+2.Go to virtualenvironment where flask has been installed
+3.Type "export FLASK_APP=webapp1.py"
+4.Then type "flask run".
+
+Alternative :-
+If your webapp1.py contain funtion ,
+if(__name__=="__main__"):
+	app.run()
+then simply type "python3 webapp1.py"
+then go to given url in terminal :) 
