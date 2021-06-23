@@ -14,7 +14,7 @@
 
       {% for id, title, company_name, status in jobs%}
       <tr>
-        <td> <a href="{{url_for('jobs.jobdetail', jid=id)}}">{{id}} </a></td>
+        <td> <a class="joblink" href="{{url_for('jobs.jobdetail', jid=id)}}">{{id}} </a></td>
         <td> {{title}} </td>
         <td> {{company_name}} </td>
         <td> {{status}} </td>
